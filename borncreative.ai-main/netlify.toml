@@ -1,3 +1,12 @@
+# netlify.toml
 [build]
-  command = "npm run build"
+  # IMPORTANT: quotes because the folder name has a space
   publish = "BC New"
+  # No build step for plain HTML/CSS/JS
+  command = ""
+
+# If you have “pretty URLs” or an SPA, keep this redirect:
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
