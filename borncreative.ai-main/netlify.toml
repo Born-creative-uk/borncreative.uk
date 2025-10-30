@@ -1,7 +1,7 @@
 # netlify.toml
 [build]
   # IMPORTANT: quotes because the folder name has a space
-  publish = "BC New"
+  publish = "borncreative.ai-main/BC New"
   # No build step for plain HTML/CSS/JS
   command = ""
 
