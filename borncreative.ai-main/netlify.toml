@@ -1,12 +1,9 @@
-# netlify.toml
 [build]
-  # IMPORTANT: quotes because the folder name has a space
-  publish = "borncreative.ai-main/BC New"
-  # No build step for plain HTML/CSS/JS
+  publish = "bc new"
   command = ""
 
-# If you have “pretty URLs” or an SPA, keep this redirect:
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
