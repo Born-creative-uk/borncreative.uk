@@ -271,6 +271,8 @@ if (!localStorage.getItem('bc-cookie-ok')) {
   const buttons = controlsRoot.querySelectorAll('[data-portfolio-scroll]');
   if (!buttons.length) return;
 
+  scroller.dataset.dragging = 'false';
+
   const getStep = () => {
     const card = scroller.querySelector('.portfolio-card');
     if (!card) return scroller.clientWidth * 0.8;
@@ -282,7 +284,9 @@ if (!localStorage.getItem('bc-cookie-ok')) {
 
   let ticking = false;
   const updateDisabled = () => {
-    const maxScroll = scroller.scrollWidth - scroller.clientWidth;
+    const maxScroll = Math.max(scroller.scrollWidth - scroller.clientWidth, 0);
+    const hasOverflow = maxScroll > 1;
+    controlsRoot.dataset.inactive = hasOverflow ? 'false' : 'true';
     const atStart = scroller.scrollLeft <= 1;
     const atEnd = scroller.scrollLeft >= maxScroll - 1;
     buttons.forEach((btn) => {
@@ -304,6 +308,61 @@ if (!localStorage.getItem('bc-cookie-ok')) {
     });
   };
 
+  const dragState = {
+    pointerId: null,
+    startX: 0,
+    startScrollLeft: 0,
+    active: false,
+    moved: false,
+    ignoreClick: false,
+  };
+
+  const onPointerDown = (event) => {
+    if (event.pointerType === 'mouse' && event.button !== 0) return;
+    dragState.active = true;
+    dragState.pointerId = event.pointerId;
+    dragState.startX = event.clientX;
+    dragState.startScrollLeft = scroller.scrollLeft;
+    dragState.moved = false;
+    scroller.dataset.dragging = 'true';
+    if (typeof scroller.setPointerCapture === 'function') {
+      try { scroller.setPointerCapture(event.pointerId); } catch (err) {}
+    }
+  };
+
+  const onPointerMove = (event) => {
+    if (!dragState.active || event.pointerId !== dragState.pointerId) return;
+    const delta = event.clientX - dragState.startX;
+    scroller.scrollLeft = dragState.startScrollLeft - delta;
+    if (!dragState.moved && Math.abs(delta) > 6) {
+      dragState.moved = true;
+    }
+    requestUpdate();
+  };
+
+  const onPointerUp = (event) => {
+    if (!dragState.active || event.pointerId !== dragState.pointerId) return;
+    dragState.active = false;
+    dragState.pointerId = null;
+    scroller.dataset.dragging = 'false';
+    if (dragState.moved) {
+      dragState.ignoreClick = true;
+      setTimeout(() => { dragState.ignoreClick = false; }, 0);
+    }
+    if (typeof scroller.releasePointerCapture === 'function') {
+      try {
+        if (typeof scroller.hasPointerCapture === 'function') {
+          if (scroller.hasPointerCapture(event.pointerId)) {
+            scroller.releasePointerCapture(event.pointerId);
+          }
+        } else {
+          scroller.releasePointerCapture(event.pointerId);
+        }
+      } catch (err) {}
+    }
+    requestUpdate();
+  };
+
   buttons.forEach((btn) => {
     btn.addEventListener('click', () => {
       const dir = btn.getAttribute('data-portfolio-scroll');
@@ -312,6 +371,22 @@ if (!localStorage.getItem('bc-cookie-ok')) {
       scroller.scrollBy({ left: delta * step, behavior: 'smooth' });
     });
   });
+
+  scroller.addEventListener('pointerdown', onPointerDown);
+  scroller.addEventListener('pointermove', onPointerMove);
+  scroller.addEventListener('pointerup', onPointerUp);
+  scroller.addEventListener('pointercancel', onPointerUp);
+  scroller.addEventListener('pointerleave', (event) => {
+    if (!dragState.active || event.pointerId !== dragState.pointerId) return;
+    onPointerUp(event);
+  });
+
+  scroller.addEventListener('click', (event) => {
+    if (!dragState.ignoreClick) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    dragState.ignoreClick = false;
+  }, true);
 
   scroller.addEventListener('scroll', requestUpdate, { passive: true });
   window.addEventListener('resize', requestUpdate);

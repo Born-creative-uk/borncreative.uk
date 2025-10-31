@@ -208,7 +208,30 @@ body {
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  touch-action: pan-x pinch-zoom;
+  touch-action: pan-x pan-y pinch-zoom;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+}
+
+.portfolio-scroller[data-dragging="true"] {
+  scroll-behavior: auto;
+}
+
+@media (hover: hover) {
+  .portfolio-scroller {
+    cursor: grab;
+  }
+
+  .portfolio-scroller[data-dragging="true"] {
+    cursor: grabbing;
+  }
+}
+
+@media (hover: none) {
+  .portfolio-scroller {
+    cursor: auto;
+  }
 }
 
 .portfolio-scroller::-webkit-scrollbar {
@@ -225,8 +248,9 @@ body {
 }
 
 .portfolio-card {
-  flex: 0 0 clamp(260px, 80vw, 360px);
+  flex: 0 0 clamp(260px, 78vw, 360px);
   scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 @media (min-width: 1024px) {
@@ -241,6 +265,10 @@ body {
   justify-content: center;
   gap: 0.75rem;
   margin-top: 0.75rem;
+}
+
+.portfolio-controls[data-inactive="true"] {
+  display: none;
 }
 
 @media (min-width: 768px) {
