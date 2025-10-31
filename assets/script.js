@@ -260,5 +260,64 @@ if (!localStorage.getItem('bc-cookie-ok')) {
   targets.forEach((el) => io.observe(el));
 })();
 
+// Portfolio carousel controls
+(() => {
+  const scroller = document.getElementById('recent-work-carousel');
+  if (!scroller) return;
+
+  const controlsRoot = document.querySelector('[data-portfolio-controls]');
+  if (!controlsRoot) return;
+
+  const buttons = controlsRoot.querySelectorAll('[data-portfolio-scroll]');
+  if (!buttons.length) return;
+
+  const getStep = () => {
+    const card = scroller.querySelector('.portfolio-card');
+    if (!card) return scroller.clientWidth * 0.8;
+    const cardWidth = card.getBoundingClientRect().width;
+    const styles = window.getComputedStyle(scroller);
+    const gap = parseFloat(styles.columnGap || styles.gap || '16');
+    return cardWidth + gap;
+  };
+
+  let ticking = false;
+  const updateDisabled = () => {
+    const maxScroll = scroller.scrollWidth - scroller.clientWidth;
+    const atStart = scroller.scrollLeft <= 1;
+    const atEnd = scroller.scrollLeft >= maxScroll - 1;
+    buttons.forEach((btn) => {
+      const dir = btn.getAttribute('data-portfolio-scroll');
+      if (dir === 'prev') {
+        btn.disabled = atStart;
+      } else if (dir === 'next') {
+        btn.disabled = atEnd;
+      }
+    });
+  };
+
+  const requestUpdate = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      ticking = false;
+      updateDisabled();
+    });
+  };
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const dir = btn.getAttribute('data-portfolio-scroll');
+      const delta = dir === 'next' ? 1 : -1;
+      const step = getStep();
+      scroller.scrollBy({ left: delta * step, behavior: 'smooth' });
+    });
+  });
+
+  scroller.addEventListener('scroll', requestUpdate, { passive: true });
+  window.addEventListener('resize', requestUpdate);
+
+  requestUpdate();
+})();
+
 
 
