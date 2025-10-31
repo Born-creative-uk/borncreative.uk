@@ -199,6 +199,40 @@ body {
   100% { transform: translate(-24px, 16px) rotate(-2deg) scale(1); }
 }
 
+/* Portfolio horizontal scroller */
+.portfolio-scroller {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 0.75rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.portfolio-scroller::-webkit-scrollbar {
+  height: 8px;
+}
+
+.portfolio-scroller::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+}
+
+.theme-light .portfolio-scroller::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 42, 0.25);
+}
+
+.portfolio-card {
+  flex: 0 0 clamp(260px, 80vw, 360px);
+  scroll-snap-align: start;
+}
+
+@media (min-width: 1024px) {
+  .portfolio-card {
+    flex-basis: clamp(300px, 32vw, 360px);
+  }
+}
+
 .moving-object {
   /* Disable movement globally */
   animation: none;
