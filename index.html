@@ -221,7 +221,7 @@ We bring creativity to life through intelligent design.
           </div>
           <div class="relative">
             <div class="pointer-events-none absolute -top-6 -right-6 h-20 w-20 rounded-full border border-white/20 bg-white/10 blur-2xl"></div>
-            <div class="portfolio-scroller pr-2" role="list" aria-label="Recent portfolio demos">
+            <div class="portfolio-scroller pr-2" id="recent-work-carousel" role="list" aria-label="Recent portfolio demos">
               <a href="portfolio/" class="portfolio-card group block overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-soft transition hover:border-[var(--brand)]/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#040712]" role="listitem">
                 <img src="portfolio/assets/01.jpg" alt="Screenshot of the BC Builders landing page" class="h-48 w-full object-cover transition duration-300 group-hover:scale-105" loading="lazy" />
                 <div class="p-4">
@@ -238,6 +238,40 @@ We bring creativity to life through intelligent design.
                   <p class="mt-3 text-sm text-white/70">Cinematic hero, newsletter capture, and brand-led eCommerce styling.</p>
                 </div>
               </a>
+              <a href="portfolio/#projects" class="portfolio-card group block overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-soft transition hover:border-[var(--brand)]/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#040712]" role="listitem">
+                <img src="portfolio/assets/02.jpg" alt="Interior renovation project gallery preview" class="h-48 w-full object-cover transition duration-300 group-hover:scale-105" loading="lazy" />
+                <div class="p-4">
+                  <p class="text-sm font-semibold uppercase tracking-wide text-[var(--brand)]">Project Gallery</p>
+                  <p class="mt-2 text-base font-medium text-white/90">Signature Renovations — Before &amp; After Showcase</p>
+                  <p class="mt-3 text-sm text-white/70">Highlights from immersive case studies and testimonial-rich layouts.</p>
+                </div>
+              </a>
+              <a href="portfolio/#contact" class="portfolio-card group block overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-soft transition hover:border-[var(--brand)]/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#040712]" role="listitem">
+                <img src="portfolio/assets/03.jpg" alt="Contact section mock-up featuring enquiry form" class="h-48 w-full object-cover transition duration-300 group-hover:scale-105" loading="lazy" />
+                <div class="p-4">
+                  <p class="text-sm font-semibold uppercase tracking-wide text-[var(--brand)]">Lead Capture</p>
+                  <p class="mt-2 text-base font-medium text-white/90">Conversion Ready — Contact &amp; Quote Funnels</p>
+                  <p class="mt-3 text-sm text-white/70">Streamlined enquiry forms and bold calls to action for local services.</p>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-controls" data-portfolio-controls data-inactive="true">
+              <button type="button" class="portfolio-nav-btn" data-portfolio-scroll="prev" aria-label="Scroll to previous project">
+                <span aria-hidden="true">
+                  <svg viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+                    <path fill-rule="evenodd" d="M12.78 4.22a.75.75 0 0 1 0 1.06L8.31 9.75l4.47 4.47a.75.75 0 1 1-1.06 1.06l-5-5a.75.75 0 0 1 0-1.06l5-5a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" />
+                  </svg>
+                </span>
+                <span class="sr-only">Previous project</span>
+              </button>
+              <button type="button" class="portfolio-nav-btn" data-portfolio-scroll="next" aria-label="Scroll to next project">
+                <span aria-hidden="true">
+                  <svg viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+                    <path fill-rule="evenodd" d="M7.22 4.22a.75.75 0 0 1 1.06 0l5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 1 1-1.06-1.06l4.47-4.47-4.47-4.47a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                  </svg>
+                </span>
+                <span class="sr-only">Next project</span>
+              </button>
             </div>
           </div>
         </div>
