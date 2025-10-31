@@ -207,26 +207,38 @@ We bring creativity to life through intelligent design.
         <div class="grid gap-8 md:grid-cols-[1.2fr_1fr] md:items-center">
           <div class="prose prose-invert">
             <h2 class="m-0 text-2xl md:text-3xl font-bold">Recent Work</h2>
-            <p class="text-white/80">Explore our latest showcase project, complete with branding, layout and messaging crafted for a local construction firm. It’s a glimpse into how we blend clean design with customer-focused storytelling.</p>
+            <p class="text-white/80">Scroll through a few of our latest concept builds — crafted to showcase how we blend storytelling, identity, and conversion-focused layouts for different industries.</p>
+            <p class="text-sm text-white/60">Swipe sideways on mobile or use your trackpad/scroll wheel on desktop to browse each project.</p>
             <ul class="mt-4 space-y-2 text-white/80 list-disc pl-5">
-              <li>Custom brand palette and typography</li>
-              <li>Responsive landing page with clear service highlights</li>
-              <li>Conversion-focused calls to action throughout</li>
+              <li>Custom brand palettes and typography systems</li>
+              <li>Responsive, conversion-ready landing pages</li>
+              <li>Purposeful messaging and clear calls to action</li>
             </ul>
             <div class="mt-6 flex flex-wrap gap-3">
-              <a href="portfolio/" class="inline-flex items-center rounded-xl bg-[var(--brand)] px-5 py-3 font-semibold text-black hover:opacity-90">View the BC Builders demo</a>
+              <a href="portfolio/" class="inline-flex items-center rounded-xl bg-[var(--brand)] px-5 py-3 font-semibold text-black hover:opacity-90">Explore our portfolio</a>
               <a href="#contact" class="inline-flex items-center rounded-xl border border-white/30 px-5 py-3 font-semibold text-white hover:bg-white/10">Book a consultation</a>
             </div>
           </div>
           <div class="relative">
-            <div class="absolute -top-6 -right-6 h-20 w-20 rounded-full border border-white/20 bg-white/10 blur-2xl"></div>
-            <a href="portfolio/" class="group block overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-soft hover:border-[var(--brand)]/60">
-              <img src="portfolio/assets/01.jpg" alt="Screenshot of the BC Builders landing page" class="h-full w-full object-cover transition duration-300 group-hover:scale-105" />
-              <div class="p-4">
-                <p class="text-sm font-semibold uppercase tracking-wide text-[var(--brand)]">Featured Demo</p>
-                <p class="mt-2 text-base font-medium text-white/90">BC Builders — Construction &amp; Renovations</p>
-              </div>
-            </a>
+            <div class="pointer-events-none absolute -top-6 -right-6 h-20 w-20 rounded-full border border-white/20 bg-white/10 blur-2xl"></div>
+            <div class="portfolio-scroller pr-2" role="list" aria-label="Recent portfolio demos">
+              <a href="portfolio/" class="portfolio-card group block overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-soft transition hover:border-[var(--brand)]/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#040712]" role="listitem">
+                <img src="portfolio/assets/01.jpg" alt="Screenshot of the BC Builders landing page" class="h-48 w-full object-cover transition duration-300 group-hover:scale-105" loading="lazy" />
+                <div class="p-4">
+                  <p class="text-sm font-semibold uppercase tracking-wide text-[var(--brand)]">Featured Demo</p>
+                  <p class="mt-2 text-base font-medium text-white/90">BC Builders — Construction &amp; Renovations</p>
+                  <p class="mt-3 text-sm text-white/70">Brand, copy, and landing page build for a construction company.</p>
+                </div>
+              </a>
+              <a href="portfolio/fashion/" class="portfolio-card group block overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-soft transition hover:border-[var(--brand)]/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#040712]" role="listitem">
+                <img src="portfolio/fashion/assets/hero.jpg" alt="Hero banner for the fashion storefront demo" class="h-48 w-full object-cover transition duration-300 group-hover:scale-105" loading="lazy" />
+                <div class="p-4">
+                  <p class="text-sm font-semibold uppercase tracking-wide text-[var(--brand)]">New Demo</p>
+                  <p class="mt-2 text-base font-medium text-white/90">Fashion Collective — Online Store Experience</p>
+                  <p class="mt-3 text-sm text-white/70">Cinematic hero, newsletter capture, and brand-led eCommerce styling.</p>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </div>
