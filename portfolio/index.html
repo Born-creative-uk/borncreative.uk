@@ -84,10 +84,17 @@
     .hamburger.active::after{transform:translateY(0) rotate(-45deg)}
 
     /* Drawer */
-    .drawer{position:fixed; inset:0; display:none}
-    .drawer.active{display:block}
-    .drawer-backdrop{position:absolute; inset:0; background:rgba(0,0,0,.4)}
-    .drawer-panel{position:absolute; right:0; top:0; height:100%; width:min(360px,90%); background:#ffffff; box-shadow:var(--shadow); padding:24px 20px; overflow:auto}
+    .drawer{position:fixed; inset:0; display:flex; align-items:stretch; justify-content:flex-end; pointer-events:none; opacity:0; transition:opacity .25s ease; z-index:100}
+    .drawer.active{pointer-events:auto; opacity:1}
+    .drawer-backdrop{flex:1; background:rgba(0,0,0,.4); opacity:0; transition:opacity .25s ease}
+    .drawer.active .drawer-backdrop{opacity:1}
+    .drawer-panel{width:min(360px,100%); max-width:360px; background:#ffffff; box-shadow:var(--shadow); padding:24px 20px; overflow:auto; transform:translateX(100%); transition:transform .3s ease}
+    .drawer.active .drawer-panel{transform:translateX(0)}
+    @media(max-width:720px){
+      .drawer-panel{max-width:none; border-radius:0; transform:translateY(-8px); width:100%; height:calc(100% - 60px); margin-top:60px; padding:28px 24px; border-top-left-radius:18px; border-top-right-radius:18px}
+      .drawer.active .drawer-panel{transform:translateY(0)}
+      header{backdrop-filter:saturate(1.2) blur(12px)}
+    }
     .drawer a{display:block; padding:12px 0; color:#111827; text-decoration:none; font-weight:600}
     .drawer .cta{margin-top:12px}
 
@@ -97,6 +104,11 @@
     @media(min-width:900px){.hero-wrap{grid-template-columns:1.2fr 1fr}}
     .hero h1{font-size:clamp(32px,4.5vw,52px); line-height:1.08; margin:8px 0}
     .hero p{font-size:18px; color:#cbd5e1}
+    .hero-actions{display:flex; gap:12px; margin-top:18px; flex-wrap:wrap}
+    @media(max-width:540px){
+      .hero-actions{flex-direction:column}
+      .hero-actions .btn{width:100%; justify-content:center}
+    }
 
     .metrics{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:18px}
     .metric{padding:14px 16px; border-radius:14px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.18); text-align:center}
@@ -162,6 +174,33 @@
     .spacer{height:28px}
     .sep{height:1px; background:#e5e7eb}
     .hidden{display:none}
+
+    @media(max-width:960px){
+      header{position:sticky; top:0}
+      section{padding:60px 0}
+      .hero{padding:70px 0 54px}
+    }
+    @media(max-width:780px){
+      .container{padding:0 16px}
+      .metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .hero{padding:64px 0 50px}
+      .hero p{font-size:16px}
+      .nav{height:60px}
+    }
+    @media(max-width:540px){
+      .metrics{grid-template-columns:1fr}
+      section{padding:48px 0}
+      .hero{padding:56px 0 44px}
+    }
+
+    @media(max-width:900px){
+      #about .grid,
+      #cta .grid,
+      #contact .grid{grid-template-columns:1fr !important}
+    }
+    @media(max-width:640px){
+      .footgrid{grid-template-columns:1fr !important}
+    }
   </style>
 </head>
 <body>
@@ -210,7 +249,7 @@
         <span class="pill kicker">Local· Reliable· Insured.</span>
         <h1>Extensions, renovations & <span style="color:var(--brand)">quality workmanship</span>.</h1>
         <p>From kitchen refits to full house refurbishments, we deliver on-time, on-budget projects with clear communication and zero fuss.</p>
-        <div style="display:flex; gap:12px; margin-top:18px">
+        <div class="hero-actions">
           <a href="#contact" class="btn btn-primary">Request a quote</a>
           <a href="#projects" class="btn btn-outline">See recent work</a>
         </div>
@@ -574,6 +613,7 @@
     drawer.addEventListener('click', (e)=>{ if(e.target.hasAttribute('data-close')) setDrawer(false) });
     drawer.querySelector('.drawer-backdrop').addEventListener('click', ()=>setDrawer(false));
     closeEls.forEach(el=>el.addEventListener('click',()=>setDrawer(false)));
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && drawer.classList.contains('active')) setDrawer(false); });
 
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
