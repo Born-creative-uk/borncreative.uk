@@ -1,0 +1,23 @@
+{
+  "name": "borncreative.ai",
+  "version": "1.0.0",
+  "description": "Official BornCreative.ai website — built with Tailwind",
+  "scripts": {
+    "dev": "tailwindcss -c tailwind.config.js -i \"./BC New/src/input.css\" -o \"./BC New/assets/tailwind.css\" --watch",
+    "build": "tailwindcss -c tailwind.config.js -i \"./BC New/src/input.css\" -o \"./BC New/assets/tailwind.css\" --minify"
+  },
+  "keywords": [
+    "tailwindcss",
+    "netlify",
+    "borncreative"
+  ],
+  "author": "BornCreative.ai",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.13",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14"
+  }
+}
