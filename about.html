@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About – BornCreative.ai</title>
+  <meta name="description" content="The story behind BornCreative.ai – where creativity, storytelling, and technology collide." />
+  <meta name="theme-color" content="#09090b" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="About – BornCreative.ai" />
+  <meta property="og:description" content="The story behind BornCreative.ai – where creativity, storytelling, and technology collide." />
+  <meta property="og:image" content="/assets/og-cover.jpg" />
+  <meta property="og:image:alt" content="BornCreative.ai" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About – BornCreative.ai" />
+  <meta name="twitter:description" content="The story behind BornCreative.ai – where creativity, storytelling, and technology collide." />
+  <meta name="twitter:image" content="/assets/og-cover.jpg" />
+
+  <!-- Tailwind via CDN (for local prototyping) -->
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','Arial','sans-serif'] },
+          boxShadow: { soft: '0 10px 30px rgba(0,0,0,0.25)' }
+        }
+      },
+      plugins: [tailwindcssTypography]
+    };
+  </script>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- External Styles -->
+  <link rel="stylesheet" href="assets/tailwind.css">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body class="bg-[var(--bg)] text-[var(--ink)] selection:bg-[var(--brand)]/30">
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 bg-black/70 backdrop-blur px-3 py-2 rounded-lg">Skip to content</a>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 border-b border-[var(--line)] bg-black/60 backdrop-blur">
+    <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
+      <a href="index.html#home" class="flex items-center gap-2">
+        <img src="assets/logo.svg" alt="BornCreative brand mark" class="h-10 md:h-12 w-auto" />
+        <span class="font-extrabold tracking-tight">BornCreative.ai</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-3 text-sm">
+        <a href="index.html#portfolio" class="hover:text-[var(--brand-2)]">Portfolio</a>
+        <a href="index.html#services" class="hover:text-[var(--brand-2)]">Our Services</a>
+        <a href="about.html" class="hover:text-[var(--brand-2)]">About</a>
+        <a href="index.html#contact" class="hover:text-[var(--brand-2)]">Contact us</a>
+        <a href="index.html#contact" class="inline-flex items-center rounded-xl bg-[var(--brand)] px-4 py-2 font-semibold hover:opacity-90">Discuss a Project</a>
+      </nav>
+      <button id="mobile-menu-toggle" class="md:hidden p-2 rounded-lg border border-[var(--line)] hover:bg-white/5" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+      </button>
+    </div>
+  </header>
+  <div id="mobile-menu" class="mobile-nav" data-open="false" aria-hidden="true">
+    <div class="mobile-nav-overlay" data-close></div>
+    <div class="mobile-nav-panel">
+      <div class="flex items-center justify-between mb-4">
+        <span class="font-extrabold">Menu</span>
+        <button class="p-2 rounded-lg border border-[var(--line)] hover:bg-white/5" data-close aria-label="Close menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <nav class="flex flex-col gap-2 text-sm" aria-label="Mobile navigation">
+        <a href="index.html#portfolio" data-close class="rounded-lg px-3 py-2 hover:bg-white/5">Portfolio</a>
+        <a href="index.html#services" data-close class="rounded-lg px-3 py-2 hover:bg-white/5">Our Services</a>
+        <a href="about.html" data-close class="rounded-lg px-3 py-2 hover:bg-white/5">About</a>
+        <a href="index.html#contact" data-close class="rounded-lg px-3 py-2 hover:bg-white/5">Contact us</a>
+        <a href="index.html#contact" data-close class="mt-2 inline-flex items-center justify-center rounded-xl bg-[var(--brand)] px-4 py-2 font-semibold text-black hover:opacity-90">Discuss a Project</a>
+      </nav>
+    </div>
+  </div>
+
+  <main id="main" class="theme-light">
+    <!-- About (standalone page) -->
+    <section class="relative overflow-hidden hero-bg text-white">
+      <div class="mx-auto max-w-7xl px-4 py-16 relative">
+        <div class="rounded-2xl border border-[var(--line)] bg-white/5 backdrop-blur p-6 md:p-10 shadow-soft">
+          <div class="grid gap-8 md:grid-cols-2 md:items-start">
+            <!-- Left: Text content -->
+            <div>
+              <div class="prose prose-invert text-left mb-8 max-w-3xl">
+                <h1 class="text-3xl md:text-5xl font-bold mb-4">About <span class="text-[var(--brand)]">Me</span></h1>
+                <div class="w-24 h-1 bg-[var(--brand)] mb-6 rounded-full ml-0"></div>
+                <p class="text-lg text-gray-200 max-w-2xl">The story behind BornCreative.ai – a space where creativity, storytelling, and technology collide.</p>
+              </div>
+              <article class="rich-content max-w-3xl text-sm md:text-base leading-relaxed">
+                <p>Hi, I’m <span class="font-semibold">Paul</span> – the founder of <span class="font-semibold text-[var(--brand)]">BornCreative.ai</span>.</p>
+                <p>I started this journey when I realised the 9–5 lifestyle wasn’t for me. I wanted to build something of my own – something that combined creativity, technology, and freedom. I’ve always loved design and storytelling, and web design became the perfect way to bring those two worlds together.</p>
+                <p><span class="font-semibold">BornCreative.ai</span> was built on a simple idea: creativity should feel alive. Every brand, every business, every story deserves to be seen and experienced in a unique way. I love taking a single spark of an idea and turning it into something real – a website, a video, a brand identity – something that connects with people.</p>
+                <p>My approach is hands-on, collaborative, and detail-driven. I believe in crafting digital experiences that not only look great, but <span class="italic text-[var(--brand-2)]">feel right</span> – clean, cinematic, and built to leave a lasting impression.</p>
+                <p>Through BornCreative.ai, I help small businesses and creators bring their visions to life using the latest in AI-driven design, storytelling, and web technology. This isn’t just a job – it’s a creative outlet, a mission, and a way to build something meaningful while spending more time with the people I love.</p>
+                <p class="text-xl font-semibold text-[var(--brand)] pt-6">BornCreative.ai is more than a name – it’s a mindset:<br><span class="text-white">Think differently. Create freely. Bring ideas to life.</span></p>
+              </article>
+            </div>
+            <!-- Right: Visual panel -->
+            <div class="mt-4 md:mt-2 md:self-center md:justify-self-center">
+              <div class="relative p-0 md:flex md:items-center md:justify-center border-0 bg-transparent shadow-none">
+                <img src="assets/aboutme.jpg" alt="About me image" class="w-full h-64 md:h-[22rem] object-contain rounded-xl select-none md:translate-y-4" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-[var(--line)] bg-[var(--bg)] text-[var(--ink)]">
+    <div class="mx-auto max-w-7xl px-4 py-10">
+      <div class="grid gap-8 md:grid-cols-3">
+        <!-- Brand -->
+        <div>
+          <a href="index.html#home" class="inline-flex items-center gap-3">
+            <img src="assets/logo.svg" alt="BornCreative.ai" class="h-10 w-auto" />
+            <span class="font-extrabold">BornCreative.ai</span>
+          </a>
+          <p class="mt-3 text-sm text-[var(--ink-dim)] max-w-sm">
+            Built by BornCreative.ai. Sleek, conversion-focused web design and branding.
+          </p>
+        </div>
+
+        <!-- Quick links -->
+        <nav aria-label="Footer navigation" class="text-sm">
+          <h3 class="font-semibold mb-3">Explore</h3>
+          <ul class="space-y-2">
+            <li><a href="index.html#home" class="hover:text-[var(--brand-2)]">Home</a></li>
+            <li><a href="about.html" class="hover:text-[var(--brand-2)]">About</a></li>
+            <li><a href="index.html#contact" class="hover:text-[var(--brand-2)]">Contact</a></li>
+            <li><a href="index.html#privacy-policy" class="hover:text-[var(--brand-2)]">Privacy policy</a></li>
+          </ul>
+        </nav>
+
+        <!-- Contact & Social -->
+        <div class="text-sm">
+          <h3 class="font-semibold mb-3">Get in touch</h3>
+          <ul class="space-y-2">
+            <li><a href="mailto:borncreative.ai@gmail.com" class="hover:text-[var(--brand-2)]">borncreative.ai@gmail.com</a></li>
+            <li><a href="tel:07885550036" class="hover:text-[var(--brand-2)]">07885550036</a></li>
+          </ul>
+          <div class="flex items-center gap-3 mt-4">
+            <a href="https://www.facebook.com/profile.php?id=61582615954127" aria-label="Facebook" class="p-2 rounded-lg border border-[var(--line)] hover:bg-white/5 hover:border-[var(--brand-2)]">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.48 17.52 2 11.94 2 6.36 2 1.88 6.48 1.88 12.06c0 4.95 3.62 9.05 8.35 9.9v-7H7.9v-2.9h2.33V9.8c0-2.3 1.37-3.58 3.47-3.58.99 0 2.02.18 2.02.18v2.22h-1.14c-1.12 0-1.47.69-1.47 1.4v1.68h2.5l-.4 2.9h-2.1v7c4.73-.85 8.35-4.95 8.35-9.9Z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/paul-lamborn-445b3538b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" aria-label="LinkedIn" class="p-2 rounded-lg border border-[var(--line)] hover:bg-white/5 hover:border-[var(--brand-2)]">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM3 8.98h3.96V21H3zM14.54 8.73c-2.09 0-3.01 1.14-3.53 1.94V9H7.04V21h3.97v-6.59c0-1.74.33-3.42 2.49-3.42 2.12 0 2.15 1.94 2.15 3.53V21h3.97v-7.08c0-3.53-.75-5.19-4.08-5.19z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-[var(--line)] text-xs text-[var(--ink-dim)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+        <span>© <script>document.write(new Date().getFullYear())</script> BornCreative.ai. All rights reserved.</span>
+        <span>Built by <a href="index.html#home" class="font-semibold hover:text-[var(--brand-2)]">BornCreative.ai</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- External Script -->
+  <script defer src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script defer src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script defer src="assets/script.js"></script>
+</body>
+</html>

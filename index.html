@@ -16,6 +16,9 @@
   <meta name="twitter:description" content="BornCreative.ai - Web Design, Hosting &amp; Branding - Runcorn" />
   <meta name="twitter:image" content="/assets/og-cover.jpg" />
 
+  <!-- Preload hero background image -->
+  <link rel="preload" as="image" href="assets/aboutme.jpg" />
+
   <!-- Tailwind via CDN (for local prototyping) -->
   <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
   <script>
@@ -57,12 +60,33 @@
       <nav class="hidden md:flex items-center gap-3 text-sm">
         <a href="#portfolio" class="hover:text-[var(--brand-2)]">Portfolio</a>
         <a href="#services" class="hover:text-[var(--brand-2)]">Our Services</a>
-        <a href="#about" class="hover:text-[var(--brand-2)]">About</a>
+        <a href="about.html" class="hover:text-[var(--brand-2)]">About</a>
         <a href="#contact" class="hover:text-[var(--brand-2)]">Contact us</a>
         <a href="#contact" class="inline-flex items-center rounded-xl bg-[var(--brand)] px-4 py-2 font-semibold hover:opacity-90">Discuss a Project</a>
       </nav>
+      <button id="mobile-menu-toggle" class="md:hidden p-2 rounded-lg border border-[var(--line)] hover:bg-white/5" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+      </button>
     </div>
   </header>
+  <div id="mobile-menu" class="mobile-nav" data-open="false" aria-hidden="true">
+    <div class="mobile-nav-overlay" data-close></div>
+    <div class="mobile-nav-panel">
+      <div class="flex items-center justify-between mb-4">
+        <span class="font-extrabold">Menu</span>
+        <button class="p-2 rounded-lg border border-[var(--line)] hover:bg-white/5" data-close aria-label="Close menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <nav class="flex flex-col gap-2 text-sm" aria-label="Mobile navigation">
+        <a href="#portfolio" data-close class="rounded-lg px-3 py-2 hover:bg-white/5">Portfolio</a>
+        <a href="#services" data-close class="rounded-lg px-3 py-2 hover:bg-white/5">Our Services</a>
+        <a href="about.html" data-close class="rounded-lg px-3 py-2 hover:bg-white/5">About</a>
+        <a href="#contact" data-close class="rounded-lg px-3 py-2 hover:bg-white/5">Contact us</a>
+        <a href="#contact" data-close class="mt-2 inline-flex items-center justify-center rounded-xl bg-[var(--brand)] px-4 py-2 font-semibold text-black hover:opacity-90">Discuss a Project</a>
+      </nav>
+    </div>
+  </div>
 
   <!-- Hero -->
   <section id="home" class="relative overflow-hidden hero-bg">
@@ -151,58 +175,159 @@ We bring creativity to life through intelligent design.
         </div>
       </div>
     </section>
-    <!-- (All your sections: About, Why, Services, Logo, Contact, Privacy, Footer remain unchanged) -->
-    <!-- Paste all your existing content here between <main> and </main> exactly as in your original file -->
-    <!-- About Me Section moved to about.html -->
-<!-- <section id="about" class="relative py-14 bg-black text-white overflow-hidden">
-  <div class="container mx-auto px-4 md:px-8 lg:px-16 max-w-6xl">
-   <div class="prose prose-invert text-center mx-auto mb-8 opacity-0 animate-fadeIn">
-      <h2 class="text-3xl md:text-5xl font-bold mb-4">␊
-        About <span class="text-[var(--brand)]">Me</span>␊
-      </h2>␊
-      <div class="w-24 h-1 bg-[var(--brand)] mx-auto mb-6 rounded-full"></div>␊
-      <p class="text-lg text-gray-300 max-w-2xl mx-auto">␊
-        The story behind BornCreative.ai — a space where creativity, storytelling, and technology collide.␊
-      </p>␊
-    </div>␊
-␊
-    <article class="rich-content opacity-0 animate-fadeIn" style="animation-delay:0.2s">
-      <p>␊
-        Hi, I’m <span class="font-semibold text-white">Paul</span> — the founder of
-        <span class="font-semibold text-[var(--brand)]">BornCreative.ai</span>.␊
-      </p>␊
-      <p>
-        I started this journey when I realised the 9–5 lifestyle wasn’t for me. I wanted to create 
-        something of my own — something that combined creativity, technology, and freedom. I’ve always 
-        had a passion for design and storytelling, and web design became the perfect way to bring those 
-        two worlds together.
-      </p>
-      <p>
-        <span class="font-semibold text-white">BornCreative.ai</span> was built on a simple idea:
-        creativity should feel alive. Every brand, every business, every story deserves to be seen 
-        and experienced in a unique way. I love taking a single spark of an idea and turning it into 
-        something real — a website, a video, a brand identity — something that connects with people.
-      </p>
-      <p>
-        My approach is hands-on, collaborative, and detail-driven. I believe in crafting digital experiences 
-        that not only look great, but <span class="italic text-orange-400">feel right</span> — clean, cinematic, 
-        and built to leave a lasting impression.
-      </p>
-      <p>
-        Through BornCreative.ai, I help small businesses and creators bring their visions to life using 
-        the latest in AI-driven design, storytelling, and web technology. This isn’t just a job for me — 
-        it’s a creative outlet, a mission, and a way to build something meaningful while spending more 
-        time with the people I love.
-      </p>
-      <p class="text-xl font-semibold text-center text-orange-400 pt-6">
-        BornCreative.ai is more than a name — it’s a mindset:<br>
-        <span class="text-white">Think differently. Create freely. Bring ideas to life.</span>
-      </p>
-    </article>
+<!-- Limited-Time Offer Section -->
+<section id="limited-offer" class="relative overflow-hidden bg-gray-50 dark:bg-gray-900">
+  <div class="mx-auto max-w-6xl px-6 py-16 sm:px-8 lg:px-10">
+    <!-- Top badge + heading -->
+    <div class="reveal mx-auto mb-6 w-fit rounded-full border border-gray-200 bg-white/80 px-4 py-1 text-xs font-medium text-gray-700 shadow-sm backdrop-blur dark:border-gray-800 dark:bg-gray-800/60 dark:text-gray-200">
+      Limited-Time Launch Offer
+    </div>
+
+    <h2 class="reveal mx-auto max-w-3xl text-center text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+      Complete Website Package for <span class="whitespace-nowrap">£95</span>
+    </h2>
+
+    <p class="reveal mx-auto mt-4 max-w-3xl text-center text-base text-gray-600 dark:text-gray-300">
+      We’re a new web design studio offering a full website build with hosting, maintenance, and monthly updates when needed.
+      Your site is SEO-ready, submitted to Google, and 100% owned by you — with access to the project files at any time.
+    </p>
+
+    <!-- What’s included -->
+    <div class="reveal mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-6 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-800 sm:grid-cols-2">
+      <ul class="space-y-3">
+        <li class="flex gap-3">
+          <svg class="mt-0.5 h-5 w-5 flex-none" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-7.25 7.25a1 1 0 01-1.414 0l-3-3a1 1 0 111.414-1.414l2.293 2.293 6.543-6.543a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span class="text-gray-800 dark:text-gray-100">Up to <strong>3 custom pages</strong> (Home, About, Contact — or similar)</span>
+        </li>
+        <li class="flex gap-3">
+          <svg class="mt-0.5 h-5 w-5 flex-none" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-7.25 7.25a1 1 0 01-1.414 0l-3-3a1 1 0 111.414-1.414l2.293 2.293 6.543-6.543a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span class="text-gray-800 dark:text-gray-100"><strong>SEO-ready</strong> build + we handle Google indexing</span>
+        </li>
+        <li class="flex gap-3">
+          <svg class="mt-0.5 h-5 w-5 flex-none" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-7.25 7.25a1 1 0 01-1.414 0l-3-3a1 1 0 111.414-1.414l2.293 2.293 6.543-6.543a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span class="text-gray-800 dark:text-gray-100">Full <strong>ownership</strong> — access or move files anytime</span>
+        </li>
+        <li class="flex gap-3">
+          <svg class="mt-0.5 h-5 w-5 flex-none" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-7.25 7.25a1 1 0 01-1.414 0l-3-3a1 1 0 111.414-1.414l2.293 2.293 6.543-6.543a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span class="text-gray-800 dark:text-gray-100"><strong>SSL</strong> certificate &amp; <strong>DNS</strong> setup (we’ll point your domain)</span>
+        </li>
+      </ul>
+
+      <ul class="space-y-3">
+        <li class="flex gap-3">
+          <svg class="mt-0.5 h-5 w-5 flex-none" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-7.25 7.25a1 1 0 01-1.414 0l-3-3a1 1 0 111.414-1.414l2.293 2.293 6.543-6.543a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span class="text-gray-800 dark:text-gray-100"><strong>Hosting &amp; maintenance</strong> included + monthly updates when needed</span>
+        </li>
+        <li class="flex gap-3">
+          <svg class="mt-0.5 h-5 w-5 flex-none" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-7.25 7.25a1 1 0 01-1.414 0l-3-3a1 1 0 111.414-1.414l2.293 2.293 6.543-6.543a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span class="text-gray-800 dark:text-gray-100"><strong>24/7 support</strong> for any technical issues</span>
+        </li>
+        <li class="flex gap-3">
+          <svg class="mt-0.5 h-5 w-5 flex-none" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-7.25 7.25a1 1 0 01-1.414 0l-3-3a1 1 0 111.414-1.414l2.293 2.293 6.543-6.543a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span class="text-gray-800 dark:text-gray-100"><strong>Proof of concept</strong> before any payment</span>
+        </li>
+        <li class="flex gap-3">
+          <svg class="mt-0.5 h-5 w-5 flex-none" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-7.25 7.25a1 1 0 01-1.414 0l-3-3a1 1 0 111.414-1.414l2.293 2.293 6.543-6.543a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span class="text-gray-800 dark:text-gray-100"><strong>Typical delivery:</strong> 1–2 weeks</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Notes -->
+    <p class="reveal mx-auto mt-4 max-w-4xl text-center text-sm text-gray-500 dark:text-gray-400">
+      Offer includes up to 3 pages. Extra pages, major redesigns, or add-ons (e.g. branding, email, eCommerce) quoted separately. Limited-time pricing.
+    </p>
+
+    <!-- CTAs -->
+    <div class="reveal mx-auto mt-8 flex max-w-md items-center justify-center gap-3">
+      <a href="#contact" class="offer-btn inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold shadow">
+        Get Your Free Concept
+      </a>
+      <a href="#packages" class="offer-btn-outline inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold">
+        See Packages
+      </a>
+    </div>
   </div>
-</section> -->
-    <!-- Portfolio -->
-    <section id="portfolio" class="mx-auto max-w-7xl px-4 pb-12">
+
+  
+</section>
+<!-- Why Choose Us Section -->
+<section id="why-choose-us" class="px-6 py-16 md:py-20">
+  <div class="mx-auto max-w-4xl rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-6 md:p-10 shadow-soft reveal">
+    <header class="mb-6 text-center">
+      <p class="choose-badge mb-2 text-xs font-semibold uppercase tracking-wide">
+        Why Choose a New Studio
+      </p>
+      <h2 class="choose-title text-3xl font-extrabold tracking-tight sm:text-4xl">
+        Why Choose a New Web Design Studio Like Us
+      </h2>
+      <div class="mx-auto mt-2 h-1 w-24 rounded-full bg-[var(--brand)]"></div>
+    </header>
+
+    <div class="choose-copy space-y-5 text-base leading-relaxed md:text-lg">
+      <p>
+        At <span class="brand-name font-semibold">BornCreative.ai</span>, we know we’re the new name in web design — and that’s exactly why we’ll work harder for you than anyone else. Our first clients aren’t just customers; they’re the foundation of everything we’re building. The success of your website is the success of our studio.
+      </p>
+      <p>
+        We’re determined to prove ourselves through every project, every detail, and every satisfied business owner who recommends us. We want you to be more than happy with your site — we want you to be <em>proud</em> to tell people who built it. Because your success will literally shape our future.
+      </p>
+      <p class="choose-closer font-medium">
+        This isn’t just another website build. It’s the start of something we’re building together.
+      </p>
+    </div>
+
+    <!-- Optional CTA row (hooks only; style later) -->
+    <div class="choose-cta mt-8 flex flex-wrap items-center justify-center gap-3">
+      <a href="#contact" class="inline-flex items-center justify-center rounded-xl bg-[var(--brand)] px-5 py-3 text-sm font-semibold text-black hover:opacity-90">
+        Start Your Free Concept
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Do You Really Need a Website Section -->
+<section id="why-website" class="px-6 py-16 md:py-20">
+  <div class="mx-auto max-w-4xl rounded-2xl border border-[var(--line)] bg-white/5 backdrop-blur p-6 md:p-10 shadow-soft reveal">
+    <header class="mb-6 text-center">
+      <p class="website-badge mb-2 text-xs font-semibold uppercase tracking-wide">
+        Why Every Business Needs a Website
+      </p>
+      <h2 class="website-title text-3xl font-extrabold tracking-tight sm:text-4xl">
+        Do You Really Need a Website?
+      </h2>
+      <div class="mx-auto mt-2 h-1 w-24 rounded-full bg-[var(--brand)]"></div>
+    </header>
+
+    <div class="website-copy space-y-5 text-base leading-relaxed md:text-lg">
+      <p>
+        Some businesses believe they don’t need a website — after all, you already have loyal customers, a social media following, and word of mouth.
+      </p>
+      <p>
+        But the truth is, a large percentage of people will <strong>search for your website before deciding to buy or book</strong>. If your business has no website, or if it looks tired or outdated, those potential customers may choose a competitor instead.
+      </p>
+      <p>
+        A professional, modern website creates <strong>trust, credibility, and confidence</strong>. It shows that your business is active, reliable, and ready to serve. And when customers compare you to others, that trust often makes all the difference.
+      </p>
+      <p class="website-closer font-medium">
+        Your online presence is often the first impression — let’s make sure it’s the right one.
+      </p>
+    </div>
+
+    <!-- Optional CTA hooks -->
+    <div class="website-cta mt-8 flex flex-wrap items-center justify-center gap-3">
+      <a href="#contact" class="offer-btn inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold">
+        Get a Modern Website
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- Divider before portfolio -->
+  <div class="mx-auto max-w-7xl px-4"><div class="h-px w-full bg-gradient-to-r from-transparent via-[var(--brand)]/50 to-transparent"></div></div>
+  <!-- Portfolio -->
+  <section id="portfolio" class="mx-auto max-w-7xl px-4 pb-12">
       <div class="relative overflow-hidden rounded-2xl border border-[var(--line)] bg-[#040712] text-white p-6 md:p-10 shadow-soft reveal reveal-left">
         <div class="grid gap-8 md:grid-cols-[1.2fr_1fr] md:items-center">
           <div class="prose prose-invert">
@@ -238,23 +363,8 @@ We bring creativity to life through intelligent design.
                   <p class="mt-3 text-sm text-white/70">Cinematic hero, newsletter capture, and brand-led eCommerce styling.</p>
                 </div>
               </a>
-              <a href="portfolio/#projects" class="portfolio-card group block overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-soft transition hover:border-[var(--brand)]/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#040712]" role="listitem">
-                <img src="portfolio/assets/02.jpg" alt="Interior renovation project gallery preview" class="h-48 w-full object-cover transition duration-300 group-hover:scale-105" loading="lazy" />
-                <div class="p-4">
-                  <p class="text-sm font-semibold uppercase tracking-wide text-[var(--brand)]">Project Gallery</p>
-                  <p class="mt-2 text-base font-medium text-white/90">Signature Renovations — Before &amp; After Showcase</p>
-                  <p class="mt-3 text-sm text-white/70">Highlights from immersive case studies and testimonial-rich layouts.</p>
-                </div>
-              </a>
-              <a href="portfolio/#contact" class="portfolio-card group block overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-soft transition hover:border-[var(--brand)]/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#040712]" role="listitem">
-                <img src="portfolio/assets/03.jpg" alt="Contact section mock-up featuring enquiry form" class="h-48 w-full object-cover transition duration-300 group-hover:scale-105" loading="lazy" />
-                <div class="p-4">
-                  <p class="text-sm font-semibold uppercase tracking-wide text-[var(--brand)]">Lead Capture</p>
-                  <p class="mt-2 text-base font-medium text-white/90">Conversion Ready — Contact &amp; Quote Funnels</p>
-                  <p class="mt-3 text-sm text-white/70">Streamlined enquiry forms and bold calls to action for local services.</p>
-                </div>
-              </a>
-            </div>
+
+            
             <div class="portfolio-controls" data-portfolio-controls data-inactive="true">
               <button type="button" class="portfolio-nav-btn" data-portfolio-scroll="prev" aria-label="Scroll to previous project">
                 <span aria-hidden="true">
@@ -279,44 +389,8 @@ We bring creativity to life through intelligent design.
     </section>
 
 
-    
-
-    <!-- Prices & Services -->
-
-    <!-- Logo Design section -->
-
-  
-
-    <!-- About (over hero background) -->
-    <section id="about" class="relative overflow-hidden hero-bg text-white">
-      <div class="mx-auto max-w-7xl px-4 py-16 relative">
-        <div class="rounded-2xl border border-[var(--line)] bg-white/5 backdrop-blur p-6 md:p-10 shadow-soft">
-          <div class="grid gap-8 md:grid-cols-2 md:items-start">
-          <!-- Left: Text content -->
-          <div>
-            <div class="prose prose-invert text-left mb-8 opacity-0 animate-fadeIn max-w-3xl">
-              <h2 class="text-3xl md:text-5xl font-bold mb-4">About <span class="text-[var(--brand)]">Me</span></h2>
-              <div class="w-24 h-1 bg-[var(--brand)] mb-6 rounded-full ml-0"></div>
-              <p class="text-lg text-gray-200 max-w-2xl">The story behind BornCreative.ai — a space where creativity, storytelling, and technology collide.</p>
-            </div>
-            <article class="rich-content opacity-0 animate-fadeIn max-w-3xl text-sm md:text-base leading-relaxed" style="animation-delay:0.2s">
-              <p>Hi, I’m <span class="font-semibold">Paul</span> — the founder of <span class="font-semibold text-[var(--brand)]">BornCreative.ai</span>.</p>
-              <p>I started this journey when I realised the 9–5 lifestyle wasn’t for me. I wanted to build something of my own — something that combined creativity, technology, and freedom. I’ve always loved design and storytelling, and web design became the perfect way to bring those two worlds together.</p>
-              <p><span class="font-semibold">BornCreative.ai</span> was built on a simple idea: creativity should feel alive. Every brand, every business, every story deserves to be seen and experienced in a unique way. I love taking a single spark of an idea and turning it into something real — a website, a video, a brand identity — something that connects with people.</p>
-              <p>My approach is hands-on, collaborative, and detail-driven. I believe in crafting digital experiences that not only look great, but <span class="italic text-[var(--brand-2)]">feel right</span> — clean, cinematic, and built to leave a lasting impression.</p>
-              <p>Through BornCreative.ai, I help small businesses and creators bring their visions to life using the latest in AI-driven design, storytelling, and web technology. This isn’t just a job — it’s a creative outlet, a mission, and a way to build something meaningful while spending more time with the people I love.</p>
-              <p class="text-xl font-semibold text-[var(--brand)] pt-6">BornCreative.ai is more than a name — it’s a mindset:<br><span class="text-white">Think differently. Create freely. Bring ideas to life.</span></p>
-            </article>
-          </div>
-          <!-- Right: Visual panel (placeholder) -->
-          <div class="mt-4 md:mt-2 md:self-center md:justify-self-center">
-            <div class="relative p-0 md:flex md:items-center md:justify-center border-0 bg-transparent shadow-none">
-              <img src="assets/aboutme.jpg" alt="About me image (placeholder for About section)" class="w-full h-64 md:h-[22rem] object-contain rounded-xl select-none md:translate-y-4" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- Divider before contact -->
+    <div class="mx-auto max-w-7xl px-4"><div class="h-px w-full bg-gradient-to-r from-transparent via-[var(--brand)]/50 to-transparent"></div></div>
     <!-- Contact -->
     <section id="contact" class="mx-auto max-w-7xl px-4 pb-16 mt-4 md:mt-5">
       <div class="grid gap-5 md:grid-cols-2">
@@ -338,10 +412,13 @@ We bring creativity to life through intelligent design.
             </a>
             <div class="flex items-center gap-3 pt-2">
               <!-- Social icons (placeholders) -->
-              <a href="https://www.facebook.com/profile.php?id=61582615954127" aria-label="Facebook" class="p-2 rounded-lg border border-[var(--line)] hover:bg-white/5 hover:border-[var(--brand-2)]">
+              <a href="https://www.facebook.com/profile.php?id=61582615954127" aria-label="Facebook" class="p-2 rounded-lg border border-[var(--line)] hover:bg-white/5 hover:border-[var(--brand-2)]" target="_blank" rel="noopener">
                 <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.48 17.52 2 11.94 2 6.36 2 1.88 6.48 1.88 12.06c0 4.95 3.62 9.05 8.35 9.9v-7H7.9v-2.9h2.33V9.8c0-2.3 1.37-3.58 3.47-3.58.99 0 2.02.18 2.02.18v2.22h-1.14c-1.12 0-1.47.69-1.47 1.4v1.68h2.5l-.4 2.9h-2.1v7c4.73-.85 8.35-4.95 8.35-9.9Z"/></svg>
               </a>
-              <a href="https://www.linkedin.com/in/paul-lamborn-445b3538b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" aria-label="LinkedIn" class="p-2 rounded-lg border border-[var(--line)] hover:bg-white/5 hover:border-[var(--brand-2)]">
+              <a href="https://wa.me/447885550036" aria-label="WhatsApp" class="p-2 rounded-lg border border-[var(--line)] hover:bg-white/5 hover:border-[var(--brand-2)]" target="_blank" rel="noopener">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.77 11.77 0 0 0 12 0 12 12 0 0 0 1.61 17.9L0 24l6.2-1.62A12 12 0 1 0 20.52 3.48ZM12 22a10 10 0 0 1-5.1-1.39l-.37-.21-3.68.96.98-3.58-.24-.37A10 10 0 1 1 12 22Zm5.49-7.57c-.3-.15-1.77-.87-2.05-.97s-.48-.15-.68.15-.78.97-.96 1.17-.35.22-.65.07a8.25 8.25 0 0 1-2.43-1.5 9.14 9.14 0 0 1-1.69-2.1c-.18-.3 0-.46.13-.61.13-.13.3-.35.43-.52s.18-.3.3-.52.06-.39 0-.54-.68-1.65-.93-2.25c-.24-.57-.5-.49-.68-.5h-.58a1.1 1.1 0 0 0-.8.37 3.38 3.38 0 0 0-1.05 2.5 5.89 5.89 0 0 0 1.23 3.07 13.5 13.5 0 0 0 5 4.56c.7.3 1.26.48 1.69.61a4.07 4.07 0 0 0 1.87.12 3.1 3.1 0 0 0 2.03-1.44 2.52 2.52 0 0 0 .18-1.44c-.07-.13-.28-.2-.58-.35Z"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/in/paul-lamborn-445b3538b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" aria-label="LinkedIn" class="p-2 rounded-lg border border-[var(--line)] hover:bg-white/5 hover:border-[var(--brand-2)]" target="_blank" rel="noopener">
                 <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM3 8.98h3.96V21H3zM14.54 8.73c-2.09 0-3.01 1.14-3.53 1.94V9H7.04V21h3.97v-6.59c0-1.74.33-3.42 2.49-3.42 2.12 0 2.15 1.94 2.15 3.53V21h3.97v-7.08c0-3.53-.75-5.19-4.08-5.19z"/></svg>
               </a>
             </div>
@@ -349,7 +426,7 @@ We bring creativity to life through intelligent design.
         </div>
 
         <!-- Netlify Form -->
-        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-3">
+        <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-3">
           <input type="hidden" name="form-name" value="contact" />
           <p class="hidden">
             <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
@@ -362,7 +439,9 @@ We bring creativity to life through intelligent design.
           <textarea class="w-full rounded-xl border border-[var(--line)] bg-white/5 px-4 py-3" name="message" rows="6" placeholder="Project details *" required></textarea>
           <!-- Optional: Turnstile/hCaptcha slot -->
           <!-- <div data-netlify-recaptcha="true"></div> -->
-          <button class="w-full rounded-xl bg-[var(--brand)] px-5 py-3 font-semibold hover:opacity-90">Enquire Now</button>
+          <button type="submit" class="w-full rounded-xl bg-[var(--brand)] px-5 py-3 font-semibold hover:opacity-90">Enquire Now</button>
+          <div id="contact-success" role="status" aria-live="polite" class="hidden mt-3 rounded-xl border border-green-500/30 bg-green-500/10 text-green-300 px-4 py-3">Thanks — your message has been sent. I’ll get back to you today.</div>
+          <div id="contact-error" role="alert" aria-live="assertive" class="hidden mt-3 rounded-xl border border-red-500/30 bg-red-500/10 text-red-300 px-4 py-3">Sorry, something went wrong. Please email <a class="underline" href="mailto:borncreative.ai@gmail.com">borncreative.ai@gmail.com</a>.</div>
         </form>
       </div>
     </section>
@@ -421,10 +500,13 @@ We bring creativity to life through intelligent design.
             <li><a href="tel:07885550036" class="hover:text-[var(--brand-2)]">07885550036</a></li>
           </ul>
           <div class="flex items-center gap-3 mt-4">
-            <a href="https://www.facebook.com/profile.php?id=61582615954127" aria-label="Facebook" class="p-2 rounded-lg border border-[var(--line)] hover:bg-white/5 hover:border-[var(--brand-2)]">
+            <a href="https://www.facebook.com/profile.php?id=61582615954127" aria-label="Facebook" class="p-2 rounded-lg border border-[var(--line)] hover:bg-white/5 hover:border-[var(--brand-2)]" target="_blank" rel="noopener">
               <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.48 17.52 2 11.94 2 6.36 2 1.88 6.48 1.88 12.06c0 4.95 3.62 9.05 8.35 9.9v-7H7.9v-2.9h2.33V9.8c0-2.3 1.37-3.58 3.47-3.58.99 0 2.02.18 2.02.18v2.22h-1.14c-1.12 0-1.47.69-1.47 1.4v1.68h2.5l-.4 2.9h-2.1v7c4.73-.85 8.35-4.95 8.35-9.9Z"/></svg>
             </a>
-            <a href="https://www.linkedin.com/in/paul-lamborn-445b3538b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" aria-label="LinkedIn" class="p-2 rounded-lg border border-[var(--line)] hover:bg-white/5 hover:border-[var(--brand-2)]">
+            <a href="https://wa.me/447885550036" aria-label="WhatsApp" class="p-2 rounded-lg border border-[var(--line)] hover:bg-white/5 hover:border-[var(--brand-2)]" target="_blank" rel="noopener">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.77 11.77 0 0 0 12 0 12 12 0 0 0 1.61 17.9L0 24l6.2-1.62A12 12 0 1 0 20.52 3.48ZM12 22a10 10 0 0 1-5.1-1.39l-.37-.21-3.68.96.98-3.58-.24-.37A10 10 0 1 1 12 22Zm5.49-7.57c-.3-.15-1.77-.87-2.05-.97s-.48-.15-.68.15-.78.97-.96 1.17-.35.22-.65.07a8.25 8.25 0 0 1-2.43-1.5 9.14 9.14 0 0 1-1.69-2.1c-.18-.3 0-.46.13-.61.13-.13.3-.35.43-.52s.18-.3.3-.52.06-.39 0-.54-.68-1.65-.93-2.25c-.24-.57-.5-.49-.68-.5h-.58a1.1 1.1 0 0 0-.8.37 3.38 3.38 0 0 0-1.05 2.5 5.89 5.89 0 0 0 1.23 3.07 13.5 13.5 0 0 0 5 4.56c.7.3 1.26.48 1.69.61a4.07 4.07 0 0 0 1.87.12 3.1 3.1 0 0 0 2.03-1.44 2.52 2.52 0 0 0 .18-1.44c-.07-.13-.28-.2-.58-.35Z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/paul-lamborn-445b3538b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" aria-label="LinkedIn" class="p-2 rounded-lg border border-[var(--line)] hover:bg-white/5 hover:border-[var(--brand-2)]" target="_blank" rel="noopener">
               <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM3 8.98h3.96V21H3zM14.54 8.73c-2.09 0-3.01 1.14-3.53 1.94V9H7.04V21h3.97v-6.59c0-1.74.33-3.42 2.49-3.42 2.12 0 2.15 1.94 2.15 3.53V21h3.97v-7.08c0-3.53-.75-5.19-4.08-5.19z"/></svg>
             </a>
           </div>
@@ -439,7 +521,9 @@ We bring creativity to life through intelligent design.
   </footer>
 
   <!-- External Script -->
-  <script src="assets/script.js"></script>
+  <script defer src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script defer src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script defer src="assets/script.js"></script>
 </body>
 </html>
 

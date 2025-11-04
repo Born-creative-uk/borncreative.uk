@@ -396,3 +396,146 @@ if (!localStorage.getItem('bc-cookie-ok')) {
 
 
 
+// Mobile drawer navigation
+(() => {
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const drawer = document.getElementById('mobile-menu');
+  const panel = drawer ? drawer.querySelector('.mobile-nav-panel') : null;
+  if (!toggle || !drawer) return;
+
+  const open = () => {
+    drawer.dataset.open = 'true';
+    drawer.setAttribute('aria-hidden', 'false');
+    toggle.setAttribute('aria-expanded', 'true');
+    document.documentElement.style.overflow = 'hidden';
+
+    // Focus trap: focus first focusable inside panel
+    if (panel) {
+      const focusables = panel.querySelectorAll(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusables.length) {
+        setTimeout(() => focusables[0].focus(), 0);
+      }
+    }
+  };
+  const close = () => {
+    drawer.dataset.open = 'false';
+    drawer.setAttribute('aria-hidden', 'true');
+    toggle.setAttribute('aria-expanded', 'false');
+    document.documentElement.style.overflow = '';
+    // Return focus to the toggle for accessibility
+    toggle.focus();
+  };
+
+  toggle.addEventListener('click', () => {
+    const isOpen = drawer.dataset.open === 'true';
+    (isOpen ? close : open)();
+  });
+  drawer.addEventListener('click', (e) => {
+    const target = e.target;
+    if (!(target instanceof Element)) return;
+    if (target.hasAttribute('data-close') || target.closest('[data-close]')) close();
+  });
+  // Trap focus within the panel when open
+  if (panel) {
+    panel.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab') return;
+      const focusables = panel.querySelectorAll(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+      if (!focusables.length) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
+  }
+  window.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+})();
+
+// GSAP animations (progressive enhancement)
+(() => {
+  const prefersReduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduce) return;
+  if (!(window.gsap && window.gsap.to)) return;
+  const gsap = window.gsap;
+  if (window.ScrollTrigger) gsap.registerPlugin(window.ScrollTrigger);
+
+  const animateIn = (targets, vars) => {
+    gsap.utils.toArray(targets).forEach((el) => {
+      const opts = Object.assign({
+        opacity: 0,
+        y: 24,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: el,
+        immediateRender: false,
+      }, vars || {});
+      gsap.from(el, opts);
+    });
+  };
+
+  // Avoid targeting .reveal here (handled by CSS/IO),
+  // animate supporting elements instead
+  animateIn('.portfolio-card, #limited-offer li, #why-choose-us .choose-copy p:not(.reveal), #why-website .website-copy p:not(.reveal)');
+})();
+
+// Contact form submit (Netlify Forms + inline feedback)
+(() => {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+
+  const successEl = document.getElementById('contact-success');
+  const errorEl = document.getElementById('contact-error');
+  const submitBtn = form.querySelector('button[type="submit"]');
+
+  const encodeFormData = (fd) => {
+    const data = new URLSearchParams();
+    for (const [k, v] of fd.entries()) {
+      data.append(k, typeof v === 'string' ? v : String(v));
+    }
+    return data.toString();
+  };
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (successEl) successEl.classList.add('hidden');
+    if (errorEl) errorEl.classList.add('hidden');
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
+    }
+
+    try {
+      const formData = new FormData(form);
+      if (!formData.get('form-name')) formData.set('form-name', form.getAttribute('name') || 'contact');
+
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encodeFormData(formData),
+      });
+
+      if (res.ok) {
+        form.reset();
+        if (successEl) successEl.classList.remove('hidden');
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch (err) {
+      if (errorEl) errorEl.classList.remove('hidden');
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+      }
+    }
+  });
+})();
