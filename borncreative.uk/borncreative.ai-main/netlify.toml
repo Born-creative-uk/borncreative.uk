@@ -1,9 +1,0 @@
-[build]
-  publish = "bc new"
-  command = ""
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
